@@ -1,0 +1,135 @@
+- hosts: debian
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Garantindo /etc/hosts
+      lineinfile:
+        path: /etc/hosts
+        line: "{{ item }}"
+      with_items:
+        - 10.62.11.12 app app.labs.devsecops
+        - 10.62.11.11 devsecops devsecops.labs.devsecops
+
+    - name: Ajustar PATH
+      blockinfile:
+        path: /etc/profile
+        block: "export PATH=$PATH:/usr/local/bin"
+        state: present
+
+    - name: Configura hostname da VM
+      hostname:
+        name: app
+
+    - name: Instalando dependencias
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: true
+      vars:
+        packages:
+        - python3
+        - python3-pip
+        - git
+        - wget
+        - vim
+        - net-tools
+        - unzip
+        - jq
+        - git
+        - perl
+        - nmap
+        - sslscan
+        - apt-transport-https
+        - ca-certificates
+        - lsb-release
+        - gnupg
+        - curl
+        - software-properties-common
+        - sudo
+
+    - name: Adiciona repositorio NodeJS
+      shell:
+        cmd: "curl -sL https://deb.nodesource.com/setup_18.x | bash -"
+
+    - name: Instala NodeJS 18
+      apt:
+        name: nodejs
+        state: latest
+        update_cache: true
+
+    - name: Adicionando chave
+      ansible.builtin.apt_key:
+        url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+        state: present
+
+    - name: Adiciona repositorio Docker
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+        state: present
+        filename: docker
+
+    - name: Instala Docker
+      apt:
+        name: 
+          - docker
+          - docker.io
+          - docker-compose
+          - docker-registry                        
+        state: latest
+        update_cache: true
+
+    - name: Instala Horusec CLI
+      shell: curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+
+    - name: Iniciar servico do Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Instala docker-compose
+      get_url: 
+        url : https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64
+        dest: /usr/bin/docker-compose
+        mode: 'u+x,g+x'
+
+    - name: Download Gitlab Runner
+      get_url:
+        url: https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+        dest: /usr/local/bin/gitlab-runner
+        mode: 0644
+
+    - name: Garantindo permissao
+      file: dest=/usr/local/bin/gitlab-runner mode=a+x
+
+    - name: Configurando usuario Runner
+      ansible.builtin.user:
+        name: gitlab-runner
+        comment: GitLab Runner
+        uid: 1040
+        groups: docker
+        create_home: true
+        shell: /bin/bash
+
+    - name: Instalando e iniciando Gitlab Runner
+      shell: |
+        /usr/local/bin/gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+        /usr/local/bin/gitlab-runner start
+
+    - name: Ajustar bash_logout
+      file:
+        path: /home/gitlab-runner/.bash_logout
+        state: absent
+
+    - name: Criando o arquivo get-pip.py
+      copy:
+        src: files/get-pip.py
+        dest: /tmp
+        mode: 0644
+
+    - name: Atualiza o timezone
+      shell: timedatectl set-timezone America/Sao_Paulo
+      args:

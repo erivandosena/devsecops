@@ -1,0 +1,107 @@
+- hosts: alma
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Instalando pacotes de dependencias
+      yum:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+        - epel-release
+        - python3
+        - python3-pip
+        - git
+        - wget
+        - vim
+        - net-tools
+        - unzip
+        - java-11-openjdk-devel
+        - make
+        - curl
+
+    - name: Garantindo /etc/hosts
+      lineinfile:
+        path: /etc/hosts
+        line: "{{ item }}"
+      with_items:
+        - 10.62.11.12 app app.labs.devsecops
+        - 10.62.11.11 devsecops devsecops.labs.devsecops
+
+    - name: Criando variaveis Horusec
+      lineinfile:
+        path: /etc/profile
+        line: "{{ item }}"
+      with_items:
+        - export REACT_APP_HORUSEC_ENDPOINT_API="http:\\/\\/10.62.11.11:8000"
+        - export REACT_APP_HORUSEC_ENDPOINT_ANALYTIC="http:\\/\\/10.62.11.11:8005"
+        - export REACT_APP_HORUSEC_ENDPOINT_CORE="http:\\/\\/10.62.11.11:8003"
+        - export REACT_APP_HORUSEC_ENDPOINT_WEBHOOK="http:\\/\\/10.62.11.11:8004"
+        - export REACT_APP_HORUSEC_ENDPOINT_AUTH="http:\\/\\/10.62.11.11:8006"
+        - export REACT_APP_HORUSEC_ENDPOINT_VULNERABILITY="http:\\/\\/10.62.11.11:8001"
+
+    - name: Ajustar PATH
+      blockinfile:
+        path: /etc/profile
+        block: "export PATH=$PATH:/usr/local/bin"
+        state: present
+
+    - name: Instala Horusec CLI
+      shell: curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest        
+
+    - name: Configura hostname da VM
+      hostname:
+        name: devsecops
+
+    - name: Clone Horusec
+      ansible.builtin.git:
+        repo: 'https://github.com/ZupIT/horusec-platform.git'
+        dest: /opt/horusec
+
+    - name: Download do arquivo docker-ce.repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+        mode: 0644
+
+    - name: Instalando pacotes do Docker
+      yum:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+
+    - name: Iniciar servico do Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Instala docker-compose
+      get_url: 
+        url : https://github.com/docker/compose/releases/download/v2.9.0/docker-compose-linux-x86_64
+        dest: /usr/bin/docker-compose
+        mode: 'u+x,g+x'
+
+    - name: Criando o arquivo get-pip.py
+      copy:
+        src: files/get-pip.py
+        dest: /tmp
+        mode: 0644
+
+    - name: Atualiza o pip com Python 3
+      shell: python3 get-pip.py
+      args:
+        chdir: /tmp
+
+    - name: Atualiza o timezone
+      shell: timedatectl set-timezone America/Sao_Paulo
+      args:

@@ -1,0 +1,5 @@
+[alma]
+10.62.11.11 ansible_user=root
+
+[debian]
+10.62.11.12 ansible_user=root
