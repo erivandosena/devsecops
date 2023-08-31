@@ -7,34 +7,50 @@ color: #fff
 colorSecondary: #10b5bf
 backgroundImage: url('images/bg-purple.png')
 style: |
-    section{
-      font-family: "Helvetica", monospace;
-    }
-    section::after {
-      font-weight: bold;
-      content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
-      font-size: 13pt;
-      color: #10b5bf;
-      text-shadow: 1px 1px 0 #000;
-    }    
----
-<!-- _backgroundImage: url('images/bg.png') -->
-<style scoped>
-  h2 {
-    font-size: 40pt;
-    list-style-type: circle;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
+  section {
+    font-family: "Helvetica", monospace;
     font-size: 20pt;
     font-weight: bold;
     list-style-type: circle;
-    font-weight: 500;
-    color: #10b5bf
   }
-</style>
-
+  section::after {
+    font-weight: bold;
+    content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
+    font-size: 13pt;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+  }
+  h1 {
+    font-size: 70pt;
+    text-shadow: 5px 5px 10px #082a44;
+  }
+  h2 {
+    font-size: 40pt;
+    text-shadow: 5px 5px 10px #082a44;
+    font-weight: 900;
+    color: #fff;
+  }
+  h3 {
+    font-size: 40pt;
+    font-weight: 900;
+    color: #fff;
+  }
+  h4 {
+    font-size: 35pt;
+    font-weight: 900;
+    color: #fff;
+  }
+  p {
+    font-size: 20pt;
+    font-weight: 500;
+    color: #fff;
+  }
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }    
+---
+<!-- _backgroundImage: url('images/bg.png') -->
 <!-- _paginate: false -->
 
 # Desvendando o poder do **DevSecOps** com Software Livre
@@ -43,33 +59,9 @@ Samuel Gonçalves
 
 ---
 <!-- _backgroundImage: url('images/bg-devsecops-heroes.jpg') -->
-<style scoped>
-  h1 {
-    font-size: 70pt;
-    list-style-type: circle;
-    text-shadow: 5px 5px 10px #082a44;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 20pt;
-    font-weight: bold;
-    list-style-type: circle;
-    font-weight: 500;
-    color: #10b5bf
-  }
-</style>
-
-<!-- _paginate: false -->
-
 # DevSecOps Heroes
 
-
-
-
 ---
-
-<!-- _paginate: false -->
 > ##  *A ciência da computação não é mais sobre computadores do que a astronomia é sobre telescópios.*
 
 *Edsger Dijkstra*
@@ -110,22 +102,6 @@ Samuel Gonçalves
 * Contato: [https://beacons.ai/sgoncalves](https://beacons.ai/sgoncalves)
 
 ---
-
-<style scoped>
-  h3 {
-    font-size: 40pt;
-    list-style-type: circle;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 20pt;
-  }
-  {
-   font-size: 35px;
-  }
-</style>
-
 ### CONCORRA A UMA ASSINATURA DA 4LINUX!
 
 ![bg left:40% 80%](images/qr-sorteio.png)
@@ -133,31 +109,11 @@ Samuel Gonçalves
 
 ---
 
-<style scoped>
-  p {
-  font-size: 25pt;
-  list-style-type: circle;
-}
-</style>
 ![bg right:40% 80%](images/qrcode-slides.jpg)
 ### Esses slides são OpenSource! 
 Escaneie e acesse!
 
 ---
-<style scoped>
-  h3 {
-    font-size: 40pt;
-    list-style-type: circle;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 20pt;
-  }
-  {
-   font-size: 35px;
-  }
-</style>
 
 ![bg left:20%](images/developer.png)
 
@@ -169,44 +125,11 @@ Escaneie e acesse!
 - Engloba diversas estratégias e atividades ao longo dessas fases.
 
 ---
-<style scoped>
-  h2 {
-    font-size: 50pt;
-    list-style-type: circle;
-    text-shadow: 5px 5px 10px #082a44;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 30pt;
-  }
-  {
-   font-size: 35px;
-  }
-</style>
-<!-- _backgroundImage: url('images/bg-purple.png') -->
-<!-- _paginate: false -->
-## Segurança em camadas
+# Segurança em camadas
 ![bg right:40% 80%](images/layers.png)
 
 ---
-<style scoped>
-  h2 {
-    font-size: 50pt;
-    list-style-type: circle;
-    text-shadow: 5px 5px 10px #082a44;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 30pt;
-  }
-  {
-   font-size: 30px;
-  }
-</style>
 <!-- _backgroundImage: url('images/bg-1.jpg') -->
-<!-- _paginate: false -->
 
 ## Proteja seu código!
 #
@@ -217,12 +140,11 @@ Escaneie e acesse!
 * **Conformidade:** Muitas regulamentações exigem medidas de segurança no desenvolvimento.
 
 ---
-
 <style scoped>
 table {
     height: 50%;
     width: 80%;
-    font-size: 21px;
+    font-size: 20px;
 
 }
 th {
@@ -262,23 +184,7 @@ huskyCI           | Python, Ruby, JavaScript, Golang e Java | [https://github.co
 
 
 ---
-<style scoped>
-  h2 {
-    font-size: 50pt;
-    list-style-type: circle;
-    text-shadow: 5px 5px 10px #082a44;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 30pt;
-  }
-  {
-   font-size: 30px;
-  }
-</style>
 <!-- _backgroundImage: url('images/bg-2.jpg') -->
-<!-- _paginate: false -->
 
 ## Proteja as dependências!
 
@@ -287,23 +193,7 @@ huskyCI           | Python, Ruby, JavaScript, Golang e Java | [https://github.co
 * **Atualizações e Patches:** Monitorar e aplicar correções reduz riscos ao longo do tempo.
 
 ---
-<style scoped>
-  h2 {
-    font-size: 50pt;
-    list-style-type: circle;
-    text-shadow: 5px 5px 10px #082a44;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 30pt;
-  }
-  {
-   font-size: 30px;
-  }
-</style>
 <!-- _backgroundImage: url('images/bg-3.jpg') -->
-<!-- _paginate: false -->
 ## Proteja seus containers!
 
 * **Isolamento de Aplicações:** Os contêineres oferecem isolamento, mas requerem configurações seguras.
@@ -311,37 +201,6 @@ huskyCI           | Python, Ruby, JavaScript, Golang e Java | [https://github.co
 * **Escalabilidade:** Como as aplicações são fragmentadas, muitas instâncias exigem proteção coordenada. 
 
 ---
-<style scoped>
-table {
-    height: 50%;
-    width: 80%;
-    font-size: 23px;
-
-}
-th {
-
-}
-h3 {
-  font-size: 40pt;
-  list-style-type: circle;
-  font-weight: 900;
-  color: #fff;
-  text-align: center;
-}
-p {
-  font-size: 20pt;
-  text-align: left;
-}
-{
- font-size: 25px;
- text-align: left;
-}
-a {
-  color: #fff;
-}
-
-</style>
-
 ### Scanners para Containers
 
 Ferramenta        |  Link para acesso
@@ -353,23 +212,7 @@ Trivy             | [https://github.com/aquasecurity/trivy](https://github.com/a
 
 
 ---
-<style scoped>
-  h2 {
-    font-size: 50pt;
-    list-style-type: circle;
-    text-shadow: 5px 5px 10px #082a44;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 30pt;
-  }
-  {
-   font-size: 30px;
-  }
-</style>
 <!-- _backgroundImage: url('images/bg-4.jpg') -->
-<!-- _paginate: false -->
 
 ## Proteja sua aplicação em execução!
 
@@ -423,23 +266,7 @@ Nikto            | [https://github.com/sullo/nikto](https://github.com/sullo/nik
 Golismero        | [https://github.com/golismero/golismero](https://github.com/golismero/golismero)
 
 ---
-<style scoped>
-  h2 {
-    font-size: 50pt;
-    list-style-type: circle;
-    text-shadow: 5px 5px 10px #082a44;
-    font-weight: 900;
-    color: #fff
-  }
-  p {
-    font-size: 30pt;
-  }
-  {
-   font-size: 30px;
-  }
-</style>
 <!-- _backgroundImage: url('images/bg-5.jpg') -->
-<!-- _paginate: false -->
 
 ## Proteja seu ambiente!
 
@@ -448,37 +275,6 @@ Golismero        | [https://github.com/golismero/golismero](https://github.com/g
 * **Conformidade:** Atende a requisitos regulatórios e normas de segurança.
 
 ---
-<style scoped>
-table {
-    height: 50%;
-    width: 80%;
-    font-size: 23px;
-
-}
-th {
-
-}
-h3 {
-  font-size: 40pt;
-  list-style-type: circle;
-  font-weight: 900;
-  color: #fff;
-  text-align: center;
-}
-p {
-  font-size: 20pt;
-  text-align: left;
-}
-{
- font-size: 25px;
- text-align: left;
-}
-a {
-  color: #fff;
-}
-
-</style>
-
 ### Ferramentas OpenSource para Hardening
 
 Ferramenta        |  Link para acesso
@@ -486,53 +282,16 @@ Ferramenta        |  Link para acesso
 DevSec Hardening  | [https://github.com/dev-sec/ansible-collection-hardening](https://github.com/dev-sec/ansible-collection-hardening)
 Ansible Hardening | [https://opendev.org/openstack/ansible-hardening](https://opendev.org/openstack/ansible-hardening)
 
-
-
 ---
-
-<style scoped>
-  h2 {
-    font-size: 50pt;
-    list-style-type: circle;
-    text-shadow: 3px 3px 8px #082a44;
-    font-weight: 1000;
-    color: #fff
-  }
-  p {
-    font-size: 30pt;
-  }
-  {
-   font-size: 35px;
-  }
-</style>
 <!-- _backgroundImage: url('images/bg-purple.png') -->
-<!-- _paginate: false -->
 
 ## DevSecOps
 #
 #
+
 Integração contínua e automatizada da segurança no processo de desenvolvimento e operações de software.
 
 ---
-
-<style scoped>
-  h2 {
-    font-size: 45pt;
-    list-style-type: circle;
-    font-weight: 1000;
-    color: #10b5bf;
-    text-align: left;
-  }
-  p {
-    font-size: 20pt;
-    text-align: left;
-  }
-  {
-   font-size: 25px;
-   text-align: left;
-  }
-</style>
-
 ## Fundamentos **DevSecOps**
 
 * Integração da segurança no ciclo de vida do desenvolvimento de software.
@@ -541,17 +300,6 @@ Integração contínua e automatizada da segurança no processo de desenvolvimen
 * Cultura de segurança e conscientização de toda a equipe.
 
 ---
-
-<style scoped>
-  h2 {
-    font-size: 60pt;
-    list-style-type: circle;
-    font-weight: 1000;
-    color: #fff;
-    text-align: center;
-  }
-
-</style>
 
 ![bg right:40% 100%](images/devsecops-automation.png)
 
@@ -575,29 +323,9 @@ Integração contínua e automatizada da segurança no processo de desenvolvimen
 
 ---
 <!-- _backgroundImage: url('images/bg-devsecops-heroes.jpg') -->
-<!-- _paginate: false -->
 # Demonstração prática!
 
 ---
-
-<style scoped>
-h2 {
-  font-size: 40pt;
-  list-style-type: circle;
-  font-weight: 900;
-  color: #fff;
-  text-align: center;
-}
-p {
-  font-size: 30pt;
-}
-{
- font-size: 30px;
-}
-a {
-  color: #fff;
-}
-</style>
 ## Obrigado!
 
 Vamos nos conectar?
@@ -610,16 +338,6 @@ Vamos nos conectar?
 
 ---
 ### Fontes Bibliográficas
-
-<style scoped>
-  p {
-  font-size: 19pt;
-  list-style-type: circle;
-}
-a {
-  color: #fff;
-}
-</style>
 
 [https://promovesolucoes.com/devsecops-seguranca-continua-lgpd/](https://promovesolucoes.com/devsecops-seguranca-continua-lgpd/)
 [https://www.redhat.com/pt-br/topics/devops/what-is-devsecops](https://www.redhat.com/pt-br/topics/devops/what-is-devsecops)
