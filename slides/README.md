@@ -102,14 +102,14 @@ Samuel Gonçalves
 * Contato: [https://beacons.ai/sgoncalves](https://beacons.ai/sgoncalves)
 
 ---
-### CONCORRA A UMA ASSINATURA DA 4LINUX!
+### CONCORRA A UM CURSO DA 4LINUX!
 
-![bg left:40% 80%](images/qr-sorteio.png)
+![bg left:40% 80%](images/qr-sorteio.jpg)
 #### É só escanear e se inscrever!
 
 ---
 
-![bg right:40% 80%](images/qrcode-slides.jpg)
+![bg right:40% 80%](images/qrcode-slides.png)
 ### Esses slides são OpenSource! 
 Escaneie e acesse!
 
