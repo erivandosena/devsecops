@@ -21,13 +21,16 @@ No evento DevOps Heroes no dia 31 de agosto de 2023.
 
 ## Objetivos da Palestra
 
-1. Compreender os princípios do DevSecOps
-2. Implementar uma pipeline funcional no GitlabCI com SAST usando:
-   1. GitlabCI
-   2. Horusec
-   3. Dependency Check
-3. Listar ferramentas OpenSource para Segurança Ágil
-4. Solucionar dúvidas relacionadas a Segurança no processo de desenvolvimento
+- Apresentar e explorar o conceito de **DevSecOps** (Desenvolvimento, Segurança e Operações) como uma abordagem que integra segurança no ciclo de vida do desenvolvimento de software.
+- Destacar a importância da colaboração entre desenvolvedores, operações e profissionais de segurança para garantir a segurança desde o início do processo de desenvolvimento.
+- Demonstrar como a automação pode ser utilizada para testar a segurança do código, identificar vulnerabilidades e corrigi-las de maneira eficiente.
+- Introduzir a cultura de segurança como um elemento fundamental para a implementação bem-sucedida do DevSecOps.
+- Apresentar as fases do processo de Segurança da Informação: prevenção, detecção e resposta, e destacar como o DevSecOps aborda cada uma dessas fases.
+- Explorar estratégias para proteger o código, as dependências, os containers e o ambiente de execução de uma aplicação.
+- Oferecer uma visão geral de ferramentas open-source disponíveis para testes de segurança, como ferramentas de análise estática (SAST) e dinâmica (DAST), bem como ferramentas de hardening.
+- Demonstrar como o DevSecOps contribui para a redução de riscos, proteção proativa e conformidade com requisitos regulatórios e normas de segurança.
+- Fornecer informações práticas sobre como implementar os princípios do DevSecOps em uma organização, promovendo uma abordagem segura e ágil ao desenvolvimento de software.
+- Compartilhar recursos e formas de conexão para continuar aprendendo e explorando os conceitos de DevSecOps e segurança no desenvolvimento de software.
 
 ## Tabela de ferramentas para SAST e DAST OpenSource e Free
 |                     Name/Link                    |            Owner            |       License       |                                           Platforms                                           |                                                                                                                                                                                                                                                                                   Note                                                                                                                                                                                                                                                                                  |
